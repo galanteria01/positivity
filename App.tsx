@@ -1,12 +1,19 @@
+import React from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import AuthStacks from './stacks/AuthStacks';
+import AppStacks from './stacks/AppStacks';
+
 
 export default function App() {
+  const [logged, isLogged] = React.useState(false)
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      {
+        logged ? (<AppStacks />) : (<AuthStacks />)
+      }
+    </NavigationContainer>
   );
 }
 
